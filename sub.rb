@@ -13,7 +13,7 @@
 def substrings(word, dictionary)
   sub_hash = {}
   dictionary.each do |sub_string|
-    match_array = word.scan(sub_string)
+    match_array = word.downcase.scan(sub_string)
     sub_hash[sub_string] = match_array.length if match_array.length > 0
   end
 
