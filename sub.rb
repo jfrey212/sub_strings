@@ -5,7 +5,21 @@
 #  the original string and how many times it was found.
 
 # word is a string, dictionary is a array of substrings
+# utilize scan to generate an array of sub pattern matches for each sub-substring
+# in the dictionary. Use the length of this array to increment the count for
+# the substring in a hash
 
-def sub(word, dictionary)
 
+def substrings(word, dictionary)
+  sub_hash = {}
+  dictionary.each do |sub_string|
+    match_array = word.scan(sub_string)
+    sub_hash[sub_string] = match_array.length if match_array.length > 0
+  end
+
+  return sub_hash
 end
+
+dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
+p substrings("below", dictionary)
+p substrings("Howdy partner, sit down! How's it going?", dictionary)
